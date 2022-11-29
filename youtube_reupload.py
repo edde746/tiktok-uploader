@@ -4,6 +4,9 @@ import pytube,os
 VIDEO_URL = 'https://www.youtube.com/watch?v=MVu496LdCko'
 
 def main():
+    if not os.path.exists('to_upload'):
+        os.mkdir('to_upload')
+        
     print('🧹 Cleaning up...')
     for file in os.listdir('to_upload'):
         os.remove('to_upload/%s' % file)

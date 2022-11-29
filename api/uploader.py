@@ -174,11 +174,12 @@ def upload_tiktok(tiktok_audio=None, original_audio=1, added_audio=1, draft=Fals
 
     # Check if we got a prompt
     try:
-        d(text='Post Now').click.wait(timeout=5000)
+        d(text='Post Now').click.wait(timeout=2000)
     except:
         pass
 
     # Wait until the upload is done
-    d(resourceId='%s:id/hs0' % APP_NAME).wait.gone(timeout=1000*60*60*2)
+    while d(resourceId='%s:id/hs0' % APP_NAME):
+        sleep(1)
     #                  ^^^^^ THIS (maybe) NEEDS TO BE UPDATED
     # I can't find a quick and reliable way to check if the upload is done, feel free to make a PR

@@ -14,10 +14,14 @@ def get_posts(subreddit='shitposting', time='week', limit=10, after=None):
     else:
         return None
 
-def download_images(json):
-    for post in json['data']['children']:
+def download_images(json, skip=0):
+    for post in json['data']['children'][skip:]:
         url = post['data']['url']
         filename = url.split('/')[-1]
+        # Ensure that this is an image
+        if filename.split('.')[-1] not in ['jpg', 'jpeg', 'png', 'gif', 'gifv', 'webp']:
+            continue
+
         r = requests.get(url, headers={'User-Agent': USER_AGENT})
         if r.status_code == 200:
             with open('to_upload/%s' % filename, 'wb') as f:
