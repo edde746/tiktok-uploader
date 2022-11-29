@@ -1,6 +1,7 @@
-import requests
+import requests,yaml
+config = yaml.load(open('config.yml', 'r').read())
 
-USER_AGENT = 'YetAnotherContentThief by /u/edde74635'
+USER_AGENT = 'YetAnotherContentThief by /u/%s' % config['reddit_username']
 
 def get_posts(subreddit='shitposting', time='week', limit=10, after=None):
     url = 'https://www.reddit.com/r/%s/top.json?t=%s&limit=%s&after=%s' % (subreddit, time, limit, after)
