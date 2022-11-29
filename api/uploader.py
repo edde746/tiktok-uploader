@@ -1,7 +1,7 @@
 from uiautomator import Device
 from time import sleep
-import os,datetime,subprocess,yaml
-config = yaml.load(open('config.yml', 'r').read())
+import os,datetime,subprocess,json
+config = json.loads(open('config.json', 'r').read())
 
 # "Static" config
 SD_CARD_INDEX = False

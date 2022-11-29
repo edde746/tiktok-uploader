@@ -1,6 +1,6 @@
 from uiautomator import Device
-import yaml
-config = yaml.load(open('config.yml', 'r').read())
+import json
+config = json.loads(open('config.json', 'r').read())
 
 d = Device(config['device'])
 d.dump('dump.xml')

@@ -1,5 +1,5 @@
-import requests,yaml
-config = yaml.load(open('config.yml', 'r').read())
+import requests,json
+config = json.loads(open('config.json', 'r').read())
 
 USER_AGENT = 'YetAnotherContentThief by /u/%s' % config['reddit_username']
 
